@@ -87,7 +87,7 @@
         </div>
         <div class="p-3 lg:px-4 lg:py-6">
           {#if resultValue}
-            <span>
+            <span class="break-all">
               {resultValue}
             </span>
           {:else}
