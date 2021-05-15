@@ -5,4 +5,5 @@ export const keyCodes = {
   C: 67,
   V: 86,
   X: 88,
+  F: 70,
 }

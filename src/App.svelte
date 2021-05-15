@@ -52,6 +52,8 @@
       onCopy()
 
       currentValueInput.focus()
+    } else if (keyCode === keyCodes.F && !focusInInput) {
+      currentValueInput.focus()
     }
   }
 </script>
