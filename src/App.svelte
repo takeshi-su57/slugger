@@ -87,11 +87,11 @@
       <div class="mt-5">
         <label class="text-white block">
           <input type="checkbox" bind:checked={isLowercase} />
-          Convert to lower case
+          <span class="ml-2">Convert to lower case </span>
         </label>
         <label class="text-white block mt-2">
           <input type="checkbox" bind:checked={isStrict} />
-          Strip special characters except replacement
+          <span class="ml-2">Strip special characters except replacement</span>
         </label>
       </div>
 
