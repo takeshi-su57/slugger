@@ -41,14 +41,14 @@
   <div class="flex flex-col w-full space-y-6 mb-6">
     <form class="flex flex-col w-full" spellcheck="false">
       <label for="text" class="mb-2 font-bold text-white">
-        Introduce a text to slug
+        Introduce your string
       </label>
       <textarea
         id="text"
         name="text"
         rows={4}
         autofocus
-        class="rounded-md text-dark p-4 focus:ring-4 ring-indigo-300 outline-none"
+        class="rounded-md text-dark p-4 focus:ring-4 ring-red-300 outline-none"
         autocomplete="off"
         placeholder="Enter your text"
         on:input={event => {
@@ -72,7 +72,7 @@
 
       <div class="mt-5 bg-white rounded-md overflow-hidden">
         <div class="p-3 lg:p-4 flex justify-between items-center bg-green-300">
-          <h2 class="font-bold">Result</h2>
+          <h2 class="font-bold">Generated Slug URL</h2>
           <span
             class="w-4 h-4 cursor-pointer hover:bg-blue-300"
             on:click={onCopy}
@@ -95,7 +95,7 @@
               {resultValue}
             </span>
           {:else}
-            <p class="text-lg text-center text-green-400">
+            <p class="lg:text-lg text-center text-green-400">
               waiting for you to write something...
             </p>
           {/if}
@@ -103,7 +103,7 @@
       </div>
 
       {#if showCopied}
-        <p class="text-white font-bold text-lg text-center my-5">
+        <p class="text-white font-bold lg:text-lg text-center my-5">
           The result was copied...
         </p>
       {/if}
@@ -111,7 +111,7 @@
   </div>
 
   <!-- Footer -->
-  <div class="text-white mt-auto text-lg">
+  <div class="text-white mt-auto lg:text-lg">
     <p>
       Created with <span class="px-1 text-red-500"
         ><svg viewBox="0 0 512 512" class="h-4 inline-block" fill="currentColor"
@@ -124,7 +124,7 @@
       <a
         href="https://yonycalsin.com"
         target="_blank"
-        class="font-bold"
+        class="font-bold hover:underline"
         rel="noopener noreferrer">@yonycalsin</a
       >
     </p>
