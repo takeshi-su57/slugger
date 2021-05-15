@@ -47,6 +47,7 @@
         id="text"
         name="text"
         rows={4}
+        autofocus
         class="rounded-md text-dark p-4 focus:ring-4 ring-indigo-300 outline-none"
         autocomplete="off"
         placeholder="Enter your text"
@@ -90,7 +91,7 @@
         </div>
         <div class="p-3 lg:px-4 lg:py-6">
           {#if resultValue}
-            <span>
+            <span class="break-all">
               {resultValue}
             </span>
           {:else}
