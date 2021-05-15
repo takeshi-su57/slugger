@@ -54,6 +54,8 @@
       currentValueInput.focus()
     } else if (keyCode === keyCodes.F && !focusInInput) {
       currentValueInput.focus()
+
+      event.preventDefault()
     }
   }
 </script>
