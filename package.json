@@ -7,7 +7,7 @@
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear",
     "validate": "svelte-check",
-    "format": "prettier --write --plugin-search-dir=. ./**/*.html"
+    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ./**/*.{html,svelte,json,css}"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
@@ -31,6 +31,7 @@
     "autoprefixer": "^9.8.6",
     "postcss": "^7.0.35",
     "sirv-cli": "^1.0.0",
+    "slugify": "^1.5.3",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2"
   }
 }
