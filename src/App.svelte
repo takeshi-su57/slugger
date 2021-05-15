@@ -43,6 +43,7 @@
         id="text"
         name="text"
         rows={4}
+        autofocus
         class="rounded-md text-dark p-4 focus:ring-4 ring-indigo-300 outline-none"
         autocomplete="off"
         placeholder="Enter your text"
