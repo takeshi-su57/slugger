@@ -1,15 +1,14 @@
 <script>
-	import { onMount } from 'svelte';
-	
-	export let value;
+  import { onMount } from 'svelte'
 
-	let textarea;
-	
-	onMount(() => {
-		textarea.select();
-		document.execCommand('copy');
-	});
+  export let value
+
+  let textarea
+
+  onMount(() => {
+    textarea.select()
+    document.execCommand('copy')
+  })
 </script>
 
-<textarea bind:value={value} bind:this={textarea}></textarea>
-
+<textarea bind:value bind:this={textarea} />

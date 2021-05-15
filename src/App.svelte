@@ -1,7 +1,9 @@
 <script lang="ts">
   import './tailwind.svelte'
+  import { onMount } from 'svelte'
   import Clipboard from './components/clipboard.svelte'
   import slugify from 'slugify'
+  import { keyCodes } from './constants'
 
   let isLowercase = true
 
@@ -9,9 +11,18 @@
 
   let showCopied = false
 
-  $: resultValue = ''
+  let currentValueInput
+
+  $: currentValue = ''
+
+  $: resultValue = slugify(currentValue, {
+    lower: isLowercase,
+    strict: isStrict,
+  })
 
   const onCopy = () => {
+    if (!resultValue) return
+
     const app = new Clipboard({
       target: document.getElementById('clipboard'),
       props: {
@@ -27,7 +38,25 @@
       showCopied = false
     }, 1000)
   }
+
+  const onHandleWindowKeyDown = event => {
+    event = event || window.event // IE support
+
+    var keyCode = event.keyCode
+
+    var ctrlDown = event.ctrlKey || event.metaKey // Mac support
+
+    const focusInInput = document.activeElement === currentValueInput
+
+    if (ctrlDown && keyCode === keyCodes.C && !focusInInput) {
+      onCopy()
+
+      currentValueInput.focus()
+    }
+  }
 </script>
+
+<svelte:window on:keydown={onHandleWindowKeyDown} />
 
 <div class="flex flex-col items-center p-6 max-w-xl mx-auto min-h-full">
   <div class="flex justify-center my-2 lg:my-5">
@@ -51,12 +80,8 @@
         class="rounded-md text-dark p-4 focus:ring-4 ring-red-300 outline-none"
         autocomplete="off"
         placeholder="Enter your text"
-        on:input={event => {
-          resultValue = slugify(event.target.value, {
-            lower: isLowercase,
-            strict: isStrict,
-          })
-        }}
+        bind:value={currentValue}
+        bind:this={currentValueInput}
       />
 
       <div class="mt-5">
