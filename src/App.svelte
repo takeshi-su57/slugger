@@ -1,14 +1,32 @@
 <script lang="ts">
   import './tailwind.svelte'
+  import Clipboard from './components/clipboard.svelte'
   import slugify from 'slugify'
-
-  let currentInputValue = ''
 
   let isLowercase = true
 
   let isStrict = true
 
-  const onCopy = (text: string) => {}
+  let showCopied = false
+
+  $: resultValue = ''
+
+  const onCopy = () => {
+    const app = new Clipboard({
+      target: document.getElementById('clipboard'),
+      props: {
+        value: resultValue,
+      },
+    })
+
+    app.$destroy()
+
+    showCopied = true
+
+    setTimeout(() => {
+      showCopied = false
+    }, 1000)
+  }
 </script>
 
 <div class="flex flex-col items-center p-6 max-w-xl mx-auto min-h-full">
@@ -27,8 +45,13 @@
         rows={5}
         class="rounded-md text-dark p-4 focus:ring-4 ring-indigo-300 outline-none"
         autocomplete="off"
-        bind:value={currentInputValue}
         placeholder="Enter your text"
+        on:input={event => {
+          resultValue = slugify(event.target.value, {
+            lower: isLowercase,
+            strict: isStrict,
+          })
+        }}
       />
 
       <div class="mt-5">
@@ -43,9 +66,12 @@
       </div>
 
       <div class="mt-5 bg-white rounded-md overflow-hidden">
-        <div class="flex justify-between items-center py-2 px-4 bg-green-300">
+        <div class="flex justify-between items-center p-4 bg-green-300">
           <h2 class="font-bold">Result</h2>
-          <span class="w-6 h-6 cursor-pointer">
+          <span
+            class="w-4 h-4 cursor-pointer hover:bg-blue-300"
+            on:click={onCopy}
+          >
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -59,11 +85,9 @@
           </span>
         </div>
         <div class="px-4 py-6">
-          {#if currentInputValue}
+          {#if resultValue}
             <span>
-              {slugify(currentInputValue, {
-                lower: isLowercase,
-              })}
+              {resultValue}
             </span>
           {:else}
             <p class="text-lg text-center text-green-400">
@@ -72,9 +96,17 @@
           {/if}
         </div>
       </div>
+
+      {#if showCopied}
+        <p class="text-white font-bold text-lg text-center my-5">
+          The result was copied...
+        </p>
+      {/if}
     </form>
   </div>
 </div>
+
+<div id="clipboard" />
 
 <style>
   :global(body) {
