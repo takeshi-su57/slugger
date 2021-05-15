@@ -30,8 +30,8 @@
 </script>
 
 <div class="flex flex-col items-center p-6 max-w-xl mx-auto min-h-full">
-  <div class="flex justify-center my-5">
-    <img class="w-14 h-14" src="/isotipo.png" />
+  <div class="flex justify-center my-2 lg:my-5">
+    <img class="w-10 h-10 lg:w-14 lg:h-14" src="/isotipo.png" />
   </div>
 
   <h1 class="text-xl lg:text-4xl mb-6 text-center font-bold text-white">
