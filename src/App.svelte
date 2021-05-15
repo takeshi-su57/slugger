@@ -30,8 +30,12 @@
 </script>
 
 <div class="flex flex-col items-center p-6 max-w-xl mx-auto min-h-full">
+  <div class="flex justify-center my-5">
+    <img class="w-14 h-14" src="/isotipo.png" />
+  </div>
+
   <h1 class="text-xl lg:text-4xl mb-6 text-center font-bold text-white">
-    Slugger the plain text
+    URL Slug Generator
   </h1>
 
   <div class="flex flex-col w-full space-y-6 mb-6">
@@ -117,7 +121,7 @@
       >
       by
       <a
-        href="https://twitter.com/yonycalsin"
+        href="https://yonycalsin.com"
         target="_blank"
         class="font-bold"
         rel="noopener noreferrer">@yonycalsin</a
